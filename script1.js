@@ -37,7 +37,7 @@ class whatIsJeopardy {
     }
 
     fetchCategories() {
-        const MAX_REQUESTS = 5; // Fetch 5 categories
+        const MAX_REQUESTS = 6; // Fetch 6 categories
         let requestsMade = 0;
 
         const fetchNextCategory = () => {
@@ -46,7 +46,7 @@ class whatIsJeopardy {
                 return;
             }
 
-            const randomCategoryId = Math.floor(Math.random() * 18418) + 1; // Generate a random category ID within the valid range
+            const randomCategoryId = Math.floor(Math.random() * 80) + 1; // Generate a random category ID within the valid range
 
             fetch(`https://jservice.io/api/category?id=${randomCategoryId}`)
                 .then((response) => {
@@ -220,3 +220,11 @@ function shuffle(a) {
 
 const game = new whatIsJeopardy(document.querySelector(".app"), {});
 game.initGame();
+
+const restartButton = document.querySelector('#restart');
+
+restartButton.addEventListener('click', (e) => {
+    if (e.target === restartButton) {
+        location.reload();
+    }
+})
